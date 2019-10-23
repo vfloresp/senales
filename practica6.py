@@ -30,10 +30,12 @@ N=10
 N1=2
 [aux,x] = funOrig(N,N1)
 plt.subplot(211)
+plt.title('X[n] con N = 10 y N1 = 2')
 plt.stem(aux,x)
 
 res = fourier(x,N,N1)
 plt.subplot(212)
+plt.title('ak con N = 10 y N1 = 2')
 plt.stem(aux,res)
 
 #Caso 2
@@ -42,10 +44,12 @@ N1=2
 plt.figure()
 [aux,x] = funOrig(N,N1)
 plt.subplot(211)
+plt.title('X[n] con N = 20 y N1 = 2')
 plt.stem(aux,x)
 
 res = fourier(x,N,N1)
 plt.subplot(212)
+plt.title('ak con N = 20 y N1 = 2')
 plt.stem(aux,res)
 
 #Caso 3
@@ -54,10 +58,12 @@ N1=2
 plt.figure()
 [aux,x] = funOrig(N,N1)
 plt.subplot(211)
+plt.title('X[n] con N = 40 y N1 = 2')
 plt.stem(aux,x)
 
 res = fourier(x,N,N1)
 plt.subplot(212)
+plt.title('ak con N = 20 y N1 = 2')
 plt.stem(aux,res)
 
 #Caso 4
@@ -66,10 +72,12 @@ N1=3
 plt.figure()
 [aux,x] = funOrig(N,N1)
 plt.subplot(211)
+plt.title('X[n] con N = 30 y N1 = 3')
 plt.stem(aux,x)
 
 res = fourier(x,N,N1)
 plt.subplot(212)
+plt.title('ak con N = 30 y N1 = 3')
 plt.stem(aux,res)
 
 #Caso 5
@@ -78,10 +86,12 @@ N1=6
 plt.figure()
 [aux,x] = funOrig(N,N1)
 plt.subplot(211)
+plt.title('X[n] con N = 30 y N1 = 6')
 plt.stem(aux,x)
 
 res = fourier(x,N,N1)
 plt.subplot(212)
+plt.title('ak con N = 30 y N1 = 6')
 plt.stem(aux,res)
 
 #Caso 6
@@ -90,15 +100,17 @@ N1=9
 plt.figure()
 [aux,x] = funOrig(N,N1)
 plt.subplot(211)
+plt.title('X[n] con N = 30 y N1 = 9')
 plt.stem(aux,x)
 
 res = fourier(x,N,N1)
 plt.subplot(212)
+plt.title('ak con N = 30 y N1 = 9')
 plt.stem(aux,res)
 
-#Ejercicio 2
 
 
+#Ejercicio 3
 def fourier2(x,N,N1):
     res = np.zeros(41)
     for i in range(-20,20):
@@ -129,7 +141,7 @@ def sumaFourier(ak,M):
 N = 9
 N1 = 2
 [aux,x] = funOrig2(N,N1)
-ak = fourier2(x,9,2)
+ak = fourier2(x,N,N1)
 res = sumaFourier(ak,1)
 plt.figure()
 plt.plot(aux,res)
