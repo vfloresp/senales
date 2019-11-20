@@ -28,6 +28,9 @@ def calcFiltros(A1,A2,Wc,Wp):
     Nc, Wnc = signal.cheb1ord(Wp,Wc,A1,A2,True)
     Ne, Wne = signal.ellipord(Wp,Wc,A1,A2,True)
 
+    print('Butterbord Wp =' + str(Wp))
+    print("N = "+ str(Nb) )
+    print("Wn = "+ str(Wnb) )
     Zb,Pb,Kb = signal.buttap(Nb)
     ab,bb = signal.zpk2tf(Zb,Pb,Kb)
     print("H(s) = ")
@@ -35,8 +38,11 @@ def calcFiltros(A1,A2,Wc,Wp):
     print(strFunTrans)
     print("\n")
     wb, hb = freqs(ab, bb)
-    plt.semilogx(wb, abs(hb))  
+    plt.semilogx(wb, abs(hb))
 
+    print('Chebychev Wp =' + str(Wp))
+    print("N = "+ str(Nc) )
+    print("Wn = "+ str(Wnc) )
     Zc,Pc,Kc = signal.buttap(Nc)
     ac,bc = signal.zpk2tf(Zc,Pc,Kc)
     print("H(s) = ")
@@ -46,6 +52,9 @@ def calcFiltros(A1,A2,Wc,Wp):
     wc, hc = freqs(ac, bc)  
     plt.semilogx(wc, abs(hc))
 
+    print('Eliptica Wp =' + str(Wp))
+    print("N = "+ str(Ne) )
+    print("Wn = "+ str(Wne) )
     Ze,Pe,Ke = signal.buttap(Ne)
     ae,be = signal.zpk2tf(Ze,Pe,Ke)
     print("H(s) = ")
@@ -59,134 +68,11 @@ def calcFiltros(A1,A2,Wc,Wp):
     plt.ylabel('Amplitude response')
     plt.grid()
 
-#Inciso 1
-#Butterbord
-#Wp = 2
-N, Wn = signal.buttord(2,1,2,14,True)
-print('Butterbord Wp = 2')
-print("N = "+ str(N) )
-print("Wn = "+ str(Wn) )
-#Inciso 2
-Z,P,K = signal.buttap(N)
-a,b = signal.zpk2tf(Z,P,K)
-print("H(s) = ")
-strFunTrans = funTrans([a,b])
-print(strFunTrans)
-print("\n")
-w, h = freqs(a, b)
-plt.semilogx(w, abs(h))
-plt.xlabel('Frequency')
-plt.ylabel('Amplitude response')
-plt.grid()
+calcFiltros(2,14,1,2)
+calcFiltros(2,14,1,1.5)
+calcFiltros(2,14,1,1.3)
 
 
-#Wp = 1.5
-[N, Wn] = signal.buttord(1.5,1,2,14,True)
-print('Butterbord Wp = 1.5')
-print("N = "+ str(N) )
-print("Wn = "+ str(Wn) )
-#Inciso 2
-Z,P,K = signal.buttap(N)
-a,b = signal.zpk2tf(Z,P,K)
-print("H(s) = ")
-strFunTrans = funTrans([a,b])
-print(strFunTrans)
-print("\n")
-
-#Wp = 1.3
-[N, Wn] = signal.buttord(1.3,1,2,14,True)
-print('Butterbord Wp = 1.3')
-print("N = "+ str(N) )
-print("Wn = "+ str(Wn) )
-#Inciso 2
-Z,P,K = signal.buttap(N)
-a,b = signal.zpk2tf(Z,P,K)
-print("H(s) = ")
-strFunTrans = funTrans([a,b])
-print(strFunTrans)
-print("\n")
-
-
-#Chebychev
-#Wp = 2
-[N, Wn] = signal.cheb1ord(2,1,2,14,True)
-print('Chebychev Wp = 2')
-print("N = "+ str(N) )
-print("Wn = "+ str(Wn) )
-#Inciso 2
-Z,P,K = signal.buttap(N)
-a,b = signal.zpk2tf(Z,P,K)
-print("H(s) = ")
-strFunTrans = funTrans([a,b])
-print(strFunTrans)
-print("\n")
-
-#Wp = 1.5
-[N, Wn] = signal.cheb1ord(1.5,1,2,14,True)
-print('Chebychev Wp = 1.5')
-print("N = "+ str(N) )
-print("Wn = "+ str(Wn) )
-#Inciso 2
-Z,P,K = signal.buttap(N)
-a,b = signal.zpk2tf(Z,P,K)
-print("H(s) = ")
-strFunTrans = funTrans([a,b])
-print(strFunTrans)
-print("\n")
-
-#Wp = 1.3
-[N, Wn] = signal.cheb1ord(1.3,1,2,14,True)
-print('Chebychev Wp = 1.3')
-print("N = "+ str(N) )
-print("Wn = "+ str(Wn) )
-#Inciso 2
-Z,P,K = signal.buttap(N)
-a,b = signal.zpk2tf(Z,P,K)
-print("H(s) = ")
-strFunTrans = funTrans([a,b])
-print(strFunTrans)
-print("\n")
-
-
-#Eliptica
-#Wp = 2
-[N, Wn] = signal.ellipord(2,1,2,14,True)
-print('Eliptica Wp = 2')
-print("N = "+ str(N) )
-print("Wn = "+ str(Wn) )
-#Inciso 2
-Z,P,K = signal.buttap(N)
-a,b = signal.zpk2tf(Z,P,K)
-print("H(s) = ")
-strFunTrans = funTrans([a,b])
-print(strFunTrans)
-print("\n")
-
-#Wp = 1.5
-[N, Wn] = signal.ellipord(1.5,1,2,14,True)
-print('Eliptica Wp = 1.5')
-print("N = "+ str(N) )
-print("Wn = "+ str(Wn) )
-#Inciso 2
-Z,P,K = signal.buttap(N)
-a,b = signal.zpk2tf(Z,P,K)
-print("H(s) = ")
-strFunTrans = funTrans([a,b])
-print(strFunTrans)
-print("\n")
-
-#Wp = 1.3
-[N, Wn] = signal.ellipord(1.3,1,2,14,True)
-print('Eliptica Wp = 1.3')
-print("N = "+ str(N) )
-print("Wn = "+ str(Wn) )
-#Inciso 2
-Z,P,K = signal.buttap(N)
-a,b = signal.zpk2tf(Z,P,K)
-print("H(s) = ")
-strFunTrans = funTrans([a,b])
-print(strFunTrans)
-print("\n")
 
 
 plt.show()
